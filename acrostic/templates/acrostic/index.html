@@ -1,0 +1,11 @@
+<h1> ACROSTIC GENERATOR</h1>
+
+{% if error_message %}<p><strong>{{error_message}}</strong></p>
+{%endif%}
+
+<form action="{% url 'acrostic:create' %}" method="post">
+{% csrf_token %}
+<label> Root Word:</label>
+<input type="text" name="Root Word"><br>
+<input type="submit" value="Create">
+</form>
