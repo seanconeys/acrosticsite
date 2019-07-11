@@ -1,5 +1,5 @@
 from django.db import models
-
+import json
 # Create your models here.
 
 class Adjective(models.Model):
@@ -15,20 +15,23 @@ class Adjective(models.Model):
 
 class Acrostic(models.Model):
     root_word = models.CharField(max_length=50)
-    poem = []
-
+    poem = models.TextField(null=True)
+    
     def __str__(self):
         return self.root_word
 
     def get_random_adjective(self, letter):
         word = Adjective.objects.filter(adjective__startswith=letter).order_by("?").first()
-        self.poem.append(word)
+        return(word.adjective)
 
     @classmethod
     def create(cls, root_word):
         acrostic = cls(root_word=root_word, poem=[])
         acrostic.save()
+        poem = []
         for letter in root_word:
-            acrostic.get_random_adjective(letter)
+            poem.append(acrostic.get_random_adjective(letter))
+
+        acrostic.poem = json.dumps(poem)
         acrostic.save()
         return acrostic

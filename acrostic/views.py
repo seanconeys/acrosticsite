@@ -2,6 +2,7 @@ from django.shortcuts import render, loader, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Acrostic
 from django.urls import reverse
+import json
 # Create your views here.
 def index(request):
      template = loader.get_template('acrostic/index.html')
@@ -13,13 +14,15 @@ def index(request):
 def poem(request, acrostic_id):
     acrostic = get_object_or_404(Acrostic, pk=acrostic_id)
     template = loader.get_template('acrostic/poem.html')
+    poem = json.decoder.JSONDecoder().decode(acrostic.poem)
     context = {
-    'acrostic': acrostic
+    'acrostic': acrostic,
+    'poem': poem,
     }
     return render(request, 'acrostic/poem.html', context)
 
 def create(request):
     root_word = request.POST['Root Word']
     acrostic = Acrostic.create(root_word)
-    # return HttpResponseRedirect(reverse('acrostic:poem', args=(acrostic.id,)))
-    return HttpResponse(acrostic.poem)
+    return HttpResponseRedirect(reverse('acrostic:poem', args=(acrostic.id,)))
+    # return HttpResponse(acrostic.poem)
