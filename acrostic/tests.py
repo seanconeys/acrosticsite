@@ -4,13 +4,11 @@ from django.urls import reverse
 from .models import Adjective, Acrostic
 import json
 
-Class AdjectiveModelTests(TestCase):
+class AdjectiveModelTests(TestCase):
 
     def test_adjective_text(self):
         adjective = Adjective(adjective="Sweet")
         assert adjective.adjective == "Sweet"
-
-        
 
 class AcrosticModelTests(TestCase):
     fixtures = ['initial_data']
