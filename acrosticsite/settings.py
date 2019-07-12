@@ -82,9 +82,9 @@ DATABASES = {
 }
 
 
-FIXTURE_DIRS = (
-   '/home/sean/Desktop/django/acrosticsite/acrostic/fixtures'
-)
+# FIXTURE_DIRS = (
+#    '/home/sean/Desktop/django/acrosticsite/acrostic/fixtures'
+# )
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

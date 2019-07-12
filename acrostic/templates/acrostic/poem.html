@@ -20,7 +20,7 @@
 
   <form action="{% url 'acrostic:create' %}" method="post">
     {% csrf_token %}
-    <input type="hidden" name="Root Word" value={{acrostic.root_word}}>
+    <input type="hidden" name="Root Word" value="{{acrostic.root_word}}">
     <input type="submit" value="Regenerate" class="button">
   </form>
 {%endblock%}

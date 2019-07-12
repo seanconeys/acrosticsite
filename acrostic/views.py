@@ -28,7 +28,8 @@ def create(request):
         acrostic = Acrostic.create(root_word)
         return HttpResponseRedirect(reverse('acrostic:poem', args=(acrostic.id,)))
 
-    except:
+    except AttributeError:
         return render(request, 'acrostic/index.html', {
         'error_message': "No numbers or special characters are allowed",
         })
+        
