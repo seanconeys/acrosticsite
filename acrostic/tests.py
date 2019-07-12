@@ -3,7 +3,14 @@ from django.test.utils import setup_test_environment
 from django.urls import reverse
 from .models import Adjective, Acrostic
 import json
-import sys
+
+Class AdjectiveModelTests(TestCase):
+
+    def test_adjective_text(self):
+        adjective = Adjective(adjective="Sweet")
+        assert adjective.adjective == "Sweet"
+
+        
 
 class AcrosticModelTests(TestCase):
     fixtures = ['initial_data']
