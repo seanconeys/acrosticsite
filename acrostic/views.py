@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Acrostic
 from django.urls import reverse
 import json
-# Create your views here.
+
+
 def index(request):
      template = loader.get_template('acrostic/index.html')
      context = {}
@@ -22,7 +23,12 @@ def poem(request, acrostic_id):
     return render(request, 'acrostic/poem.html', context)
 
 def create(request):
-    root_word = request.POST['Root Word']
-    acrostic = Acrostic.create(root_word)
-    return HttpResponseRedirect(reverse('acrostic:poem', args=(acrostic.id,)))
-    # return HttpResponse(acrostic.poem)
+    try:
+        root_word = request.POST['Root Word']
+        acrostic = Acrostic.create(root_word)
+        return HttpResponseRedirect(reverse('acrostic:poem', args=(acrostic.id,)))
+
+    except:
+        return render(request, 'acrostic/index.html', {
+        'error_message': "No numbers or special characters are allowed",
+        })

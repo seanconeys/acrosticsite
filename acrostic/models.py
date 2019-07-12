@@ -14,9 +14,9 @@ class Adjective(models.Model):
         return self.adjective
 
 class Acrostic(models.Model):
-    root_word = models.CharField(max_length=50)
+    root_word = models.TextField(max_length=50)
     poem = models.TextField(null=True)
-    
+
     def __str__(self):
         return self.root_word
 
@@ -26,7 +26,7 @@ class Acrostic(models.Model):
 
     @classmethod
     def create(cls, root_word):
-        acrostic = cls(root_word=root_word, poem=[])
+        acrostic = cls(root_word=root_word)
         acrostic.save()
         poem = []
         for letter in root_word:

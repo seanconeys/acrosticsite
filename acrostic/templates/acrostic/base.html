@@ -1,0 +1,14 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'acrostic/style.css' %}">
+</head>
+<div class="site_header">
+  <h1 id="header_text"> Acrostic Generator</h1>
+</div>
+<body>
+
+  <div id="main">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>

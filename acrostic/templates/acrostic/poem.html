@@ -1,7 +1,26 @@
-<h1> Your Acrostic </h1>
+{% extends 'acrostic/base.html' %}
 
-<ul>
-{% for word in poem %}
-    <li>{{word}}</li>
-{% endfor %}
-</ul>
+{% block content %}
+  <h1 id="title"> Your Acrostic </h1>
+  <div class="poem">
+    <ul>
+      {% for word in poem %}
+      <li><b>{{word|slice:":1"}}</b>
+        {%if word.1 %}
+          is for {{word}}</li>
+        {%else%}
+      </br>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  </div>
+
+  <a href="{% url 'acrostic:index' %}" class="button">Start Over</a>
+
+  <form action="{% url 'acrostic:create' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="Root Word" value={{acrostic.root_word}}>
+    <input type="submit" value="Regenerate" class="button">
+  </form>
+{%endblock%}
