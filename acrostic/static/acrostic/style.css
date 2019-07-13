@@ -26,20 +26,24 @@
   margin: auto;
   text-align: left;
   width: 30%;
-  text-overflow: visible;
+
+
 }
 
+html{
+  height:100%;
+}
 body {
   background-color: gray;
-  height: auto;
+  height: 100%;
 }
 #main{
   background-color: white;
   margin: auto;
   width: 90%;
-  height: 100%;
   text-align: center;
   position: relative;
+  overflow: auto;
 }
 #title{
   text-align: center;
