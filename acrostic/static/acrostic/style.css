@@ -1,3 +1,19 @@
+#main{
+  background-color: white;
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  overflow: auto;
+}
+#title{
+  text-align: center;
+}
+#header_text{
+  color: white;
+  padding: 15px 32px;
+}
+
 .site_header{
   background-color: purple;
   height:10%;
@@ -5,10 +21,7 @@
   text-align:left;
 }
 
-#header_text{
-  color: white;
-  padding: 15px 32px;
-}
+
 .button {
   background-color: purple; /* Green */
   border: none;
@@ -26,8 +39,6 @@
   margin: auto;
   text-align: left;
   width: 30%;
-
-
 }
 
 html{
@@ -37,17 +48,7 @@ body {
   background-color: gray;
   height: 100%;
 }
-#main{
-  background-color: white;
-  margin: auto;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  overflow: auto;
-}
-#title{
-  text-align: center;
-}
+
 form{
   display: inline-block;
   margin: 10px auto;
